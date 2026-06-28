@@ -4,10 +4,17 @@ import sys
 
 def build(brief: str) -> dict:
     """Run the full DRAGO build pipeline."""
-    from agents.orchestrator import Orchestrator
-
-    result = Orchestrator().run(brief)
-    return result
+    try:
+        from agents.orchestrator import Orchestrator
+        result = Orchestrator().run(brief)
+        return result
+    except Exception as e:
+        # ponytail: stub until agents are implemented; keep CLI runnable
+        return {
+            "status": "not_implemented",
+            "brief": brief,
+            "error": f"{type(e).__name__}: {e}",
+        }
 
 
 def main(argv=None):
