@@ -24,6 +24,17 @@ python drago.py --help
 python drago.py build --brief "Dental clinic website"
 ```
 
+## Code
+
+```python
+from agents.orchestrator import Orchestrator
+from agents.deploy import SiteDeployer
+
+plan = Orchestrator().run("Dental clinic website")
+deploy = SiteDeployer(plan)
+result = deploy.apply()
+```
+
 ## Stack
 
 - Python 3.11+
